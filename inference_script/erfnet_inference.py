@@ -15,7 +15,7 @@ import time
 from datetime import datetime
 
 
-from models import erfnet_road
+from models import erfnet
 
 ### Colors for visualization
 # Ego: red, other: blue
@@ -31,7 +31,7 @@ else:
 # label_mappings = {"city street":0, "highway":1, "others":2, "residential":3}
 ROAD_MAP = ['city street', 'highway', 'others', 'residential']
 
-model_checkpoint = "/home/sachin/Desktop/free_space_detection_script/scripts/experiments/uncertainity/exp5/epoch_50.pth.tar"
+model_checkpoint = "/home/sachin/Desktop/free_space_detection_script/scripts/experiments/multi_scale/exp8/best_chkpt.pth.tar"
 
 
 
@@ -39,15 +39,9 @@ model_checkpoint = "/home/sachin/Desktop/free_space_detection_script/scripts/exp
 def evaluate(image):
     resize_factor = 5
     debug = True
-    with_road = True
+    with_road = False
     queue_size = 10
-    #model = erfnet_road.Net()
-    #model_w = torch.load(model_checkpoint)
-    #model_w = model_w["state_dict"]
-    #model = torch.nn.DataParallel(cnn).cuda()
-    #model.load_state_dict(model_w)
-    #model = torch.nn.DataParallel(model).to(device)
-    #model.eval()
+    model.eval()
     input_tensor = torch.from_numpy(image)
     input_tensor = torch.div(input_tensor.float(), 255)
     input_tensor = input_tensor.permute(2,0,1).unsqueeze(0)
@@ -71,9 +65,7 @@ def evaluate(image):
 
     output = output.max(dim=1)[1]
     output = output.float().unsqueeze(0)
-    print('***Finished***')
 
-    return
     ### Resize to desired scale for easier clustering
     output = F.interpolate(output, size=(output.size(2) // resize_factor, output.size(3) // resize_factor) , mode='nearest')
     ### Obtaining actual output
@@ -104,7 +96,7 @@ def evaluate(image):
 
             # Visualization
             print("Visualizing output")
-            cv2.imwrite("/home/sachin/Desktop/free_space_detection_script/test_imgs/passat_sample_imgs/erfnet_op_test8.jpg", cv2.resize(image, (640, 360), cv2.INTER_NEAREST))
+            cv2.imwrite("/home/sachin/Desktop/erfnet_op_test8.jpg", cv2.resize(image, (960, 544), cv2.INTER_NEAREST))
             #cv2.waitKey(1)
         except Exception as e:
             print("Visualization error. Exception: %s" % e)
@@ -113,7 +105,7 @@ def evaluate(image):
 global startTime
 
 if __name__ == '__main__':
-    model = erfnet_road.Net()
+    model = erfnet.Net(num_classes=3)
     model_w = torch.load(model_checkpoint)
     model_w = model_w["state_dict"]
     #model = torch.nn.DataParallel(cnn).cuda()
@@ -126,7 +118,7 @@ if __name__ == '__main__':
     oriimg = cv2.imread(str(image),cv2.IMREAD_COLOR)
     #print(oriimg.shape)
 
-    img = cv2.resize(oriimg,(640,360))
+    img = cv2.resize(oriimg,(960,544))
     evaluate(img)
     total_time = datetime.now() - startTime
     print(total_time, 'in secs: ', total_time.microseconds)
