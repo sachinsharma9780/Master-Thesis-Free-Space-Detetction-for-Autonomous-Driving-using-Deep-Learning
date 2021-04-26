@@ -8,4 +8,14 @@ Requirements:
 1) Pytorch-Cuda (version > 1.0)
 2) Basic Machine learning libraries
 
-Instructions to run the training script:
+## Instructions to run the training script:
+
+1) Use the train.py file to start the training. In that file, you need to mention where to store all the checkpoints and training, validation graphs, path to the BDD dataset .
+2) After that use the command CUDA_VISIBLE_DEVICES= gpu# python train.py to run the training script.
+
+## Instrunctions to run the Inference script:
+
+1) Inference scripts are stored in inference_script folder.
+2) While inferencing from specific model e.g skip connections model you need to import that particular model in the inference script.
+3) To run the inference, pass the input image path in the inference script and the output path to store the result. 
+4) command e.g. : CUDA_VISIBLE_DEVICES= gpu# python erfnet_inference.py
