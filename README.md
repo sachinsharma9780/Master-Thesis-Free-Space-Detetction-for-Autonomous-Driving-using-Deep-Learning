@@ -1,7 +1,7 @@
 # Master-Thesis-Free-Space-Detetction-for-Autonomous-Driving-using-Deep-Learning
 
-Given an input image the task is to detect free road areas in all the lanes. This is a task of semantic segmentation where we classify each pixel of an image into 3 different
-classes i.e. ego lane (current driving lane), other lanes and background.
+Given an input image the task is to detect free road areas in all the lanes and classify the given input image into one of classes (city_street, highway, ,etc). This results to a multi-task learning where we do semantic segmentation (i.e classify each pixel of an image into 3 different
+classes i.e. ego lane, other lanes and background) and mult-class classification simultaneously.
 
 Requirements:
 
