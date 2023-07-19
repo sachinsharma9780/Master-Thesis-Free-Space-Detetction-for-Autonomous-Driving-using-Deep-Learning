@@ -10,6 +10,10 @@ classes i.e. ego lane, other lanes, and background) and multi-class classificati
 
 Dataset Used: [Berkely Deep Drive (BDD)](https://bdd-data.berkeley.edu/) drivable area dataset.
 
+## Inference example from the trained model took on 1 frame:
+![bdd_inference](https://github.com/sachinsharma9780/Master-Thesis-Free-Space-Detetction-for-Autonomous-Driving-using-Deep-Learning/assets/40523048/ae4bb78e-b84b-4e45-87cd-e690a56737b2)
+
+
 Requirements:
 
 1) Pytorch-Cuda (version > 1.0)
