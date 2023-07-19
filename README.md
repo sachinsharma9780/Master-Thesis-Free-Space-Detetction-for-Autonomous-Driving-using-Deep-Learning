@@ -1,4 +1,4 @@
-# Master-Thesis-Free-Space-Detetction-for-Autonomous-Driving-using-Deep-Learning
+# Master-Thesis-Free-Space-Detection-for-Autonomous-Driving-using-Deep-Learning
 
 - In this work, the network is tasked with detecting free road surfaces in multiple lanes (ego lane and other lanes) given a single 360 x 640 resolution camera frame.
 - The network detects the free road surfaces if it contains a part of the road that the vehicle can safely drive on.
