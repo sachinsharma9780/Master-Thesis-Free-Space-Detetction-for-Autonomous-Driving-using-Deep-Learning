@@ -10,7 +10,7 @@ classes i.e. ego lane, other lanes, and background) and multi-class classificati
 
 Dataset Used: [Berkely Deep Drive (BDD)](https://bdd-data.berkeley.edu/) drivable area dataset.
 
-## Inference example from the trained model took on 1 frame:
+### Inference example from the trained model took on 1 frame:
 ![bdd_inference](https://github.com/sachinsharma9780/Master-Thesis-Free-Space-Detetction-for-Autonomous-Driving-using-Deep-Learning/assets/40523048/ae4bb78e-b84b-4e45-87cd-e690a56737b2)
 
 
@@ -19,12 +19,12 @@ Requirements:
 1) Pytorch-Cuda (version > 1.0)
 2) Basic Machine learning libraries
 
-## Instructions to run the training script:
+### Instructions to run the training script:
 
 1) Use the train.py file to start the training. In that file, you need to mention where to store all the checkpoints and training, validation graphs, and path to the BDD dataset.
 2) After that use the command CUDA_VISIBLE_DEVICES= gpu# python train.py to run the training script.
 
-## Instructions to run the Inference script:
+### Instructions to run the Inference script:
 
 1) Inference scripts are stored in the inference_script folder.
 2) While inferencing from a specific model e.g. skip connections model you need to import that particular model in the inference script.
